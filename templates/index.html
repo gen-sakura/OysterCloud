@@ -23,9 +23,8 @@
               
               new Chart(ctx, {
                 type: 'line',
-                labels: Utils.months({count: 7}),
                 data: {
-                  labels: labels,
+                  labels: Utils.months({count: 7}),
                   datasets: [{
                     label: 'pH',
                     data: [65, 59, 80, 81, 56, 55, 40],
@@ -33,8 +32,15 @@
                     borderColor: 'rgb(75, 192, 192)',
                     tension: 0.1
                   }]
+                },
+                options: {
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
                 }
-              }
+              });
             </script>
           
             <!--h1 class="display-6 fw-bold text-primary">Welcome to Azure</h1> -->           
