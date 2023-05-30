@@ -13,36 +13,42 @@
 
             <!-- Load chart.js dependencies-->
             <div>
-              <canvas id="myChart"></canvas>
+              <canvas id="line-chart" width="800" height="450"></canvas>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             
             <!--code for chart-->
             <script>
-              const ctx = document.getElementById('myChart');
-              
-              new Chart(ctx, {
+              new Chart(document.getElementById("line-chart"), {
                 type: 'line',
                 data: {
                   labels: Utils.months({count: 7}),
-                  datasets: [{
-                    label: 'pH',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
-                    tension: 0.1
-                  }]
+                  datasets: [{ 
+                      data: [86,114,106,106,107,111,133,221,783,2478],
+                      label: "Location 1",
+                      borderColor: "#3e95cd",
+                      fill: true
+                    }, { 
+                      data: [282,350,411,502,635,809,947,1402,3700,5267],
+                      label: "Location 2",
+                      borderColor: "#8e5ea2",
+                      fill: true
+                    }, { 
+                      data: [168,170,178,190,203,276,408,547,675,734],
+                      label: "Location 3",
+                      borderColor: "#3cba9f",
+                      fill: true
+                    }
+                  ]
                 },
                 options: {
-                  scales: {
-                    y: {
-                      beginAtZero: true
-                    }
+                  title: {
+                    display: true,
+                    text: 'pH of Shuck Sensors'
                   }
                 }
               });
             </script>
-          
             <!--h1 class="display-6 fw-bold text-primary">Welcome to Azure</h1> -->           
           </div>
           <!--
