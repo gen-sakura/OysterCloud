@@ -7,64 +7,48 @@
 <html>
    <body>
      <main>
-        <div class="px-4 py-3 my-2 text-center">
-            <!--img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/azure-icon.svg') }}" alt="Azure Logo" width="192" height="192"/>
-            <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <!--div class="px-4 py-3 my-2 text-center">
+          <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='images/azure-icon.svg') }}" alt="Azure Logo" width="192" height="192"/>
+          <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
 
-            <!-- Load chart.js dependencies-->
-            <div>
-              <canvas id="line-chart" width="800" height="450"></canvas>
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <!-- Load chart.js dependencies-->
+          <div>
+            <canvas id="line-chart" width="800" height="450"></canvas>
+          </div>
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             
             <!--code for chart-->
-            <script>
-              new Chart(document.getElementById("line-chart"), {
-                type: 'line',
-                data: {
-                  labels: Utils.months({count: 10}),
-                  datasets: [{ 
-                      data: [86,114,106,106,107,111,133,221,783,2478],
-                      label: "Location 1",
-                      borderColor: "#3e95cd",
-                      fill: true
-                    }, { 
-                      data: [282,350,411,502,635,809,947,1402,3700,5267],
-                      label: "Location 2",
-                      borderColor: "#8e5ea2",
-                      fill: true
-                    }, { 
-                      data: [168,170,178,190,203,276,408,547,675,734],
-                      label: "Location 3",
-                      borderColor: "#3cba9f",
-                      fill: true
-                    }
-                  ]
-                },
-                options: {
-                  title: {
-                    display: true,
-                    text: 'pH of Shuck Sensors'
-                  }
-                }
-              });
-            </script>
-            <!--h1 class="display-6 fw-bold text-primary">Welcome to Azure</h1> -->           
-          </div>
-          <!--
-        <form method="post" action="{{url_for('hello')}}">
-            <div class="col-md-6 mx-auto text-center">
-                <label for="name" class="form-label fw-bold fs-5">Could you please tell me your name?</label>-->
-
-                <!-- <p class="lead mb-2">Could you please tell me your name?</p> -->
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                    <input type="text" class="form-control" id="name" name="name" style="max-width: 256px;">
-                  </div>            
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
-                  <button type="submit" class="btn btn-primary btn-lg px-4 gap-3">Say Hello</button>
-                </div>            
-            </div>
-        </form>
+          <script>
+            new Chart(document.getElementById("line-chart"), {
+              type: 'line',
+              data: {
+                labels: Utils.months({count: 10}),
+                datasets: [{ 
+                  data: [86,114,106,106,107,111,133,221,783,2478],
+                  label: "Location 1",
+                  borderColor: "#3e95cd",
+                  fill: true
+                }, { 
+                  data: [282,350,411,502,635,809,947,1402,3700,5267],
+                  label: "Location 2",
+                  borderColor: "#8e5ea2",
+                  fill: true
+                }, { 
+                  data: [168,170,178,190,203,276,408,547,675,734],
+                  label: "Location 3",
+                  borderColor: "#3cba9f",
+                  fill: true
+                }]
+              },
+            options: {
+              title: {
+                display: true,
+                text: 'pH of Shuck Sensors'
+              }
+            }
+            });
+          </script>          
+        </div>
      </main>      
    </body>
 </html>
