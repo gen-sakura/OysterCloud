@@ -13,7 +13,7 @@
 
           <!-- Load chart.js dependencies-->
           <div>
-            <canvas id="line-chart" width="800" height="450"></canvas>
+            <canvas id="line-chart" width="800" height="400"></canvas>
           </div>
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             
@@ -22,30 +22,60 @@
             new Chart(document.getElementById("line-chart"), {
               type: 'line',
               data: {
-                labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+                labels: ['12:00 am', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00 pm'],
                 datasets: [{ 
-                  data: [86,114,106,106,107,111,133,221,783,2478],
-                  label: "Location 1",
+                  data: [8.03, 8.03, 8.03, 8.03, 8.03, 8.03, 8.03, 8.03, 8.04, 8.03, 8.03, 8.03, 8.04, 8.03, 8.03, 
+                  8.04, 8.03, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04],
+                  label: "pH",
                   borderColor: "#3e95cd",
-                  fill: true
+                  fill: true,
+                  yAxisID: 'y'
                 }, { 
-                  data: [282,350,411,502,635,809,947,1402,3700,5267],
-                  label: "Location 2",
-                  borderColor: "#8e5ea2",
-                  fill: true
+                  data: [21.09, 21.08, 21.08, 21.08, 21.08, 21.09, 21.09, 21.09, 21.09, 21.1, 21.1, 21.1, 21.11, 21.12, 
+                  21.12, 21.12, 21.12, 21.13, 21.13, 21.13, 21.14, 21.36, 21.22, 21.1, 21.2, 20.97, 19.83, 19.99, 20.3],
+                  label: "Temperature (C)",
+                  borderColor: "#e8c3b9",
+                  fill: true,
+                  yAxisID: 'y'
                 }, { 
-                  data: [168,170,178,190,203,276,408,547,675,734],
-                  label: "Location 3",
+                  data: [7.83, 7.83, 7.83, 7.83, 7.83, 7.83, 7.83, 7.82, 7.82, 7.82, 7.82, 7.82, 7.81, 7.81, 7.81, 7.8,
+                  7.8, 7.8, 7.8, 7.8, 7.79, 7.75, 7.77, 7.77, 7.77, 7.81, 8.02, 7.99, 7.93],
+                  label: "Salinity (PSU)",
                   borderColor: "#3cba9f",
-                  fill: true
+                  fill: true,
+                  yAxisID: 'y'
+                }, { 
+                  data: [13590, 13580, 13590, 13580, 13580, 13580, 13580, 13570 ,13570, 13570, 13560, 13560, 13550, 13550,
+                  13540, 13540, 13540, 13530, 13530, 13530, 13520, 13450, 13490, 13490, 13490, 13550, 13890, 13840, 13740],
+                  label: "Conductivity (uS/cm)",
+                  borderColor: "#c45850",
+                  fill: true,
+                  yAxisID: 'y1'
                 }]
               },
-            options: {
-              title: {
-                display: true,
-                text: 'pH of Shuck Sensors'
-              }
-            }
+              options: {
+                title: {
+                  display: true,
+                  text: 'Custom Chart Title'
+                },
+                scales: {
+                  y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                  },
+                  y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+
+                    // grid line settings
+                    grid: {
+                      drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                  },
+                }
+             }
             });
           </script>          
         </div>
