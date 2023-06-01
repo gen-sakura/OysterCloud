@@ -1,15 +1,33 @@
+# Gen Sakura, 2023
+# Flask app for OysterCloud backend for NOAA ShuckProject
+# Email gensakura002@gmail.com for all questions and suggestions.
+# Next year's team feel free to modify/add your name here.
+# Based off Azure flask template in the README.md
+
+# Import all dependencies
 import os
+import sys
+
+# Add pythonScripts to path
+path = os.path.abspath('pythonScripts')
+sys.path.append(path)
+
+import JSON_stuff as jss # from pythonScripts
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
+# App configuration and rendering
 app = Flask(__name__)
-
 
 @app.route('/')
 def index():
    print('Request for index page received')
-   return render_template('index.html')
+   
+   # Load and create JSON file for the last 1000 pH readings
+   jss.create_last_1000_pH_dataset_JSON()
+
+   return render_template('index.html', jsonfile = 'last_1000_pH_data.json')
 
 @app.route('/favicon.ico')
 def favicon():
