@@ -30,5 +30,9 @@ def get_top_1000_rows():
     row_cursor = query(sql)
     return dataset_to_df(row_cursor)
 
-top_1000_rows = get_top_1000_rows()
-print(top_1000_rows)
+def get_most_recent_rows(numberOfRows):
+    sql = '''
+    SELECT TOP ({numberOfRows}) * FROM [dbo].[DataTable] ORDER BY [Timestamp] DESC
+    '''.format(numberOfRows=numberOfRows)
+    row_cursor = query(sql)
+    return dataset_to_df(row_cursor)
