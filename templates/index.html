@@ -16,47 +16,42 @@
             <canvas id="line-chart" width="800" height="400"></canvas>
           </div>
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            
-            <!--code for chart-->
+          
+          <!--load labels and data for chart-->
+          <script>
+            var graph = {{jsonfile|safe}};
+            var measurementType = graph.label;
+            var measurementData = graph.datasets;
+          </script>
+          <!--code for chart-->
           <script>
             new Chart(document.getElementById("line-chart"), {
               type: 'line',
               data: {
-                labels: ['12:00 am', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00 pm'],
+                labels: Array.from(Array(1000).keys()),
                 datasets: [{ 
-                  data: [8.03, 8.03, 8.03, 8.03, 8.03, 8.03, 8.03, 8.03, 8.04, 8.03, 8.03, 8.03, 8.04, 8.03, 8.03, 
-                  8.04, 8.03, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04, 8.04],
-                  label: "pH",
+                  data: measurementData,
+                  label: measurementType,
                   borderColor: "#3e95cd",
                   fill: true,
                   yAxisID: 'y'
-                }, { 
-                  data: [21.09, 21.08, 21.08, 21.08, 21.08, 21.09, 21.09, 21.09, 21.09, 21.1, 21.1, 21.1, 21.11, 21.12, 
-                  21.12, 21.12, 21.12, 21.13, 21.13, 21.13, 21.14, 21.36, 21.22, 21.1, 21.2, 20.97, 19.83, 19.99, 20.3],
-                  label: "Temperature (C)",
-                  borderColor: "#e8c3b9",
-                  fill: true,
-                  yAxisID: 'y'
-                }, { 
-                  data: [7.83, 7.83, 7.83, 7.83, 7.83, 7.83, 7.83, 7.82, 7.82, 7.82, 7.82, 7.82, 7.81, 7.81, 7.81, 7.8,
-                  7.8, 7.8, 7.8, 7.8, 7.79, 7.75, 7.77, 7.77, 7.77, 7.81, 8.02, 7.99, 7.93],
-                  label: "Salinity (PSU)",
-                  borderColor: "#3cba9f",
-                  fill: true,
-                  yAxisID: 'y'
-                }, { 
-                  data: [13590, 13580, 13590, 13580, 13580, 13580, 13580, 13570 ,13570, 13570, 13560, 13560, 13550, 13550,
-                  13540, 13540, 13540, 13530, 13530, 13530, 13520, 13450, 13490, 13490, 13490, 13550, 13890, 13840, 13740],
-                  label: "Conductivity (uS/cm)",
-                  borderColor: "#c45850",
-                  fill: true,
-                  yAxisID: 'y1'
                 }]
               },
               options: {
-                title: {
-                  display: true,
-                  text: 'Custom Chart Title'
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Oysterlytics Dashboard',
+                    padding: {
+                    top: 30,
+                    bottom: 20
+                    },
+                    font: {
+                      size: 24,
+                      style: 'bold',
+                      family: 'Calibri'
+                    }
+                  }
                 },
                 scales: {
                   y: {

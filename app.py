@@ -13,9 +13,13 @@ path = os.path.abspath('pythonScripts')
 sys.path.append(path)
 
 import JSON_stuff as jss # from pythonScripts
+import json as json
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
+
+# Define Constants
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 # App configuration and rendering
 app = Flask(__name__)
@@ -26,8 +30,10 @@ def index():
    
    # Load and create JSON file for the last 1000 pH readings
    jss.create_last_1000_pH_dataset_JSON()
+   json_url = os.path.join(SITE_ROOT, 'last_1000_pH_data.json')
+   last_1000_pH_data = json.load(open(json_url))
 
-   return render_template('index.html', jsonfile = 'last_1000_pH_data.json')
+   return render_template('index.html', jsonfile=last_1000_pH_data)
 
 @app.route('/favicon.ico')
 def favicon():
